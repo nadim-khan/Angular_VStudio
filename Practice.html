@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/Module_Practice.js"></script>
+    <link href="Scripts/Table.css" rel="stylesheet" />
+    <title>Learning AJS</title>
+       
+</head>
+<body >
+    <div ng-controller="myController" style="font-family:Arial">
+        Serach : <input type="Text" placeholder=" Serch Employee " ng-model="searchText.Name" />
+        <input type="Text" placeholder=" Serch Date of Birth " ng-model="searchText.dob" />
+        <input type="checkbox"  ng-model="exactMatch" />Exact Match
+        <br /><br />
+        <table>
+            <thead>
+                <tr>
+                    <th ng-click="Sortdata('Name')">
+                        Name <div ng-class="getSortClass('Name')"></div>
+                    </th>
+                    <th ng-click="Sortdata('dob')">
+                        Date Of Birth<div ng-class="getSortClass('dob')"></div>
+                    </th>
+                    <th ng-click="Sortdata('salary')">
+                        Salary<div ng-class="getSortClass('salary')"></div>
+                    </th>
+                    <th ng-click="Sortdata('salary')">
+                        >Salary (Currency)<div ng-class="getSortClass('salary')"></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Employee in Employees| limitTo:rowLimit|orderBy:Sortit:ReverseSort|filter:searchText:exactMatch">
+                    Rows to be Displayed :
+                    <input type="number" step="1" max="10" min="0" ng-model="rowLimit" />
+                    Sort By :
+                    <select ng-model="Sortit">
+                        <option value="Name"> Name Asc</option>
+                        <option value="Dob"> Date of Birth Asc</option>
+                        <option value="salary"> Salary Asc</option>
+                    </select>
+
+
+                    </br></br>
+                    <td>{{ Employee.Name }}</td>
+                    <td>{{ Employee.Dob | date:"dd-MM-yyyy" }}</td>
+                    <td>{{ Employee.salary| number:2 }}</td>
+                    <td>{{ Employee.salary|currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>   
+</body>
+</html>

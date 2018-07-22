@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <script src="Scripts/angular.js"></script>
+  
+    <script src="Scripts/image_ng_src.js"></script>
+    <meta charset="utf-8" />
+    <title>ng-src, Using image</title>
+    <h1>Using image, (ng-src)</h1>
+</head>
+<body >
+    <div ng-controller="myController">
+        <div>Country Name : {{image.name}}</div>
+        <div>Capital : {{image.capital}}</div>
+        <img src="{{image.flag}}" alt="{{image.name + ' flag'}}" style="height:100px; width:200px;" />
+    </div>
+</body>
+</html>
